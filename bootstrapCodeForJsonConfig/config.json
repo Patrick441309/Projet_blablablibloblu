@@ -1,0 +1,35 @@
+{
+  "app": {
+    "name": "Cacophonie Bot Manager",
+    "version": "1.0.0",
+    "port": 3000,
+    "environment": "development"
+  },
+  "discord": {
+    "token": "${DISCORD_TOKEN}",
+    "clientId": "YOUR_CLIENT_ID",
+    "guildId": "YOUR_GUILD_ID"
+  },
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "name": "cacophonie_db",
+    "user": "postgres",
+    "password": "${DB_PASSWORD}"
+  },
+  "logging": {
+    "level": "info",
+    "format": "json",
+    "outputFile": "logs/app.log"
+  },
+  "workers": {
+    "maxWorkers": 5,
+    "workerTimeout": 30000,
+    "workerMemoryLimit": "512MB"
+  },
+  "rivescript": {
+    "debugMode": false,
+    "caseSensitive": false,
+    "scriptDirectory": "./rivescript"
+  }
+}

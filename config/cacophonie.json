@@ -1,0 +1,58 @@
+{
+  "app": {
+    "name": "Cacophonie Bot Manager",
+    "host": "127.0.0.1",
+    "port": 3000,
+    "environment": "development"
+  },
+  "storage": {
+    "dataDir": "data"
+  },
+  "bots": {
+    "defaultBrainDirectory": "bootstrapCodeForRivescriptChatBot/brain",
+    "discordMaxClients": 3,
+    "preconfigured": [
+      {
+        "name": "Bot1",
+        "description": "Premier bot Cacophonie (bouche Discord)",
+        "brain": { "engine": "rivescript" },
+        "mouth": {
+          "type": "discord",
+          "discord": {
+            "token": "${DISCORD_BOT_1_TOKEN}",
+            "mentionOnly": true
+          }
+        }
+      },
+      {
+        "name": "Bot2",
+        "description": "Deuxième bot Cacophonie (bouche Discord)",
+        "brain": { "engine": "rivescript" },
+        "mouth": {
+          "type": "discord",
+          "discord": {
+            "token": "${DISCORD_BOT_2_TOKEN}",
+            "mentionOnly": true
+          }
+        }
+      },
+      {
+        "name": "Bot3",
+        "description": "Troisième bot Cacophonie (bouche Discord)",
+        "brain": { "engine": "rivescript" },
+        "mouth": {
+          "type": "discord",
+          "discord": {
+            "token": "${DISCORD_BOT_3_TOKEN}",
+            "mentionOnly": true
+          }
+        }
+      }
+    ]
+  },
+  "webMouth": {
+    "enabled": true,
+    "host": "127.0.0.1",
+    "port": 3001
+  }
+}

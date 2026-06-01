@@ -1,0 +1,173 @@
+openapi: 3.1.0
+info:
+  title: Cacophonie Bot Manager API
+  version: 1.0.0
+  description: API REST de management des bots Cacophonie avec exposition HATEOAS.
+servers:
+  - url: http://127.0.0.1:3000
+paths:
+  /:
+    get:
+      summary: Document racine HATEOAS
+      responses:
+        '200':
+          description: Document racine
+  /health:
+    get:
+      summary: Vérification de santé
+      responses:
+        '200':
+          description: Service opérationnel
+  /bots:
+    get:
+      summary: Liste les bots
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: mouth
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Collection de bots
+    post:
+      summary: Crée un bot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BotInput'
+      responses:
+        '201':
+          description: Bot créé
+  /bots/{botId}:
+    get:
+      summary: Récupère un bot
+      parameters:
+        - $ref: '#/components/parameters/BotId'
+      responses:
+        '200':
+          description: Bot trouvé
+    patch:
+      summary: Met à jour un bot
+      parameters:
+        - $ref: '#/components/parameters/BotId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BotPatch'
+      responses:
+        '200':
+          description: Bot mis à jour
+    delete:
+      summary: Supprime un bot
+      parameters:
+        - $ref: '#/components/parameters/BotId'
+      responses:
+        '200':
+          description: Bot supprimé
+  /bots/{botId}/start:
+    post:
+      summary: Active un bot
+      parameters:
+        - $ref: '#/components/parameters/BotId'
+      responses:
+        '200':
+          description: Bot activé
+  /bots/{botId}/stop:
+    post:
+      summary: Désactive un bot
+      parameters:
+        - $ref: '#/components/parameters/BotId'
+      responses:
+        '200':
+          description: Bot désactivé
+  /bots/{botId}/history:
+    get:
+      summary: Historique des conversations
+      parameters:
+        - $ref: '#/components/parameters/BotId'
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Entrées d'historique
+  /bots/{botId}/events:
+    get:
+      summary: Événements de configuration et de cycle de vie
+      parameters:
+        - $ref: '#/components/parameters/BotId'
+      responses:
+        '200':
+          description: Liste des événements
+  /brains:
+    get:
+      summary: Liste les cerveaux disponibles
+      responses:
+        '200':
+          description: Liste des moteurs conversationnels
+  /mouths:
+    get:
+      summary: Liste les bouches disponibles
+      responses:
+        '200':
+          description: Liste des bouches
+components:
+  parameters:
+    BotId:
+      name: botId
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    BotInput:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        brain:
+          oneOf:
+            - type: string
+            - type: object
+        mouth:
+          oneOf:
+            - type: string
+            - type: object
+    BotPatch:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        brain:
+          oneOf:
+            - type: string
+            - type: object
+        mouth:
+          oneOf:
+            - type: string
+            - type: object

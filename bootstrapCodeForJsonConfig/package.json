@@ -1,0 +1,16 @@
+{
+  "name": "config-management-example",
+  "version": "1.0.0",
+  "description": "Exemple Node.js pour gérer une configuration avec fichiers JSON",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "configuration",
+    "json",
+    "nodejs"
+  ],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "cacophonie",
+  "version": "1.0.0",
+  "description": "Backend de gestion de chatbots Discord et Web pour le projet Cacophonie",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node src/index.js",
+    "test": "node --test"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "discord.js": "^14.26.4",
+    "rivescript": "^2.2.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
