@@ -14,8 +14,8 @@ Le projet final ajoute : `src/` (10 fichiers), `openapi.yaml`, `package.json`,
 | Personne | Fichiers principaux | Rôle |
 |---|---|---|
 | **A** | `src/persistence.js`, `src/config.js`, `src/store.js`, `src/index.js` | Infrastructure & données |
-| **B** | `src/worker.js`, `src/runtime.js` | Moteur & orchestration workers |
-| **C** | `src/http.js`, `src/server.js`, `src/webMouth.js`, `src/discordMouth.js`, `openapi.yaml` | API & bouches |
+| **B** | `src/worker.js`, `src/runtime.js`, `src/discordMouth.js` | Moteur, orchestration workers & bouche Discord |
+| **C** | `src/http.js`, `src/server.js`, `src/webMouth.js`, `openapi.yaml` | API REST & bouche web |
 
 ---
 
