@@ -27,7 +27,14 @@ function deepMerge(target, source) {
     return cloneValue(source);
   }
 
-  const result = isPlainObject(target) ? cloneValue(target) : {};
+  // On copie target manuellement pour éviter la récursion infinie entre
+  // cloneValue(plainObj) → deepMerge({}, plainObj) → cloneValue({}) → deepMerge({}, {}) → ...
+  const result = {};
+  if (isPlainObject(target)) {
+    for (const [key, value] of Object.entries(target)) {
+      result[key] = cloneValue(value);
+    }
+  }
 
   for (const [key, value] of Object.entries(source)) {
     if (Array.isArray(value)) {
